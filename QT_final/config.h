@@ -26,13 +26,13 @@ extern std::string clientC_name;
 extern int total_C;
 
 /**Website info */
-extern int yahoo_cnt;
-extern int yahoo_fail;
-extern std::tm yahoo_begin;
+extern int wind_cnt;
+extern int wind_fail;
+extern std::tm wind_begin;
 
-extern int ptt_cnt;
-extern int ptt_fail;
-extern std::tm ptt_begin;
+extern int ebc_cnt;
+extern int ebc_fail;
+extern std::tm ebc_begin;
 
 extern int ettoday_cnt;
 extern int ettoday_fail;
@@ -43,15 +43,7 @@ extern int clientState[3];
 extern int clientCrawl[3];
 extern int clientFail[3];
 extern std::tm clientBegin[3];
+extern std::string clientUrl[3];
 
-/*extern int clientB_state;
-extern int clientB_crawl;
-extern int clientB_fail;
-extern std::tm clientB_begin;
-
-extern int clientC_state;
-extern int clientC_crawl;
-extern int clientC_fail;
-extern std::tm clientC_begin;*/
 
 #endif // CONFIG_H

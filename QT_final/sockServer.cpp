@@ -172,13 +172,13 @@ void sockServer::run() {
                 else { //client
                     if (read_from_client(fd) < 0) {
                         std::cerr << "Client " << fd << " leaves" << std::endl;
-                        close(fd);
                         for (int i=0; i<3; i++) {
                             if (m[i] == fd) {
                                 m.erase(i);
                                 clientState[i] = 0;
                             }
                         }
+                        close(fd);
                         FD_CLR(fd, &active_set);
                     }
                 }
@@ -192,19 +192,41 @@ int sockServer::read_from_client(int fd) {
     int nbytes = recv(fd, buf, MAX_MSG, 0);
     if (nbytes < 0) {
         perror("read_from_client: read");
-        exit(EXIT_FAILURE);
+        return nbytes;
+        //exit(EXIT_FAILURE);
     }
     else if(nbytes == 0)
         return -1;
     for (int i=0; i<3; i++) {
         if (m[i] == fd) {
-            if (strncmp(buf, "fail", sizeof("fail"))==0){
+            int status, news;
+            char url[256];
+            bool fail_flag = false;
+            sscanf(buf, "%d %d %s", &status, &news, url);
+            if (status == 0) { // 0: false
                 clientFail[i]++;
                 failure_count++;
+                fail_flag = true;
             }
-            else
-                clientCrawl[i]++;
-
+            switch (news) {
+            case 0:     //wind
+                if (fail_flag)
+                    wind_fail++;
+                wind_cnt++;
+                break;
+            case 1:     //ebc
+                if (fail_flag)
+                    ebc_fail++;
+                ebc_cnt++;
+                break;
+            case 2:     //ettoday
+                if (fail_flag)
+                    ettoday_fail++;
+                ettoday_cnt++;
+                break;
+            }
+            clientUrl[i] = std::string(url);
+            clientCrawl[i]++;
             total_count++;
             break;
         }

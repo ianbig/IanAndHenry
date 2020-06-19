@@ -24,13 +24,13 @@ int total_B = 100000;
 int total_C = 100000;
 
 /**Website info */
-int yahoo_cnt = 0;
-int yahoo_fail = 0;
-std::tm yahoo_begin = *std::localtime(&t);;
+int wind_cnt = 0;
+int wind_fail = 0;
+std::tm wind_begin = *std::localtime(&t);;
 
-int ptt_cnt = 0;
-int ptt_fail = 0;
-std::tm ptt_begin = *std::localtime(&t);;
+int ebc_cnt = 0;
+int ebc_fail = 0;
+std::tm ebc_begin = *std::localtime(&t);;
 
 int ettoday_cnt = 0;
 int ettoday_fail = 0;
@@ -45,13 +45,4 @@ int clientState[3] = {0};
 int clientCrawl[3] = {0};
 int clientFail[3] = {0};
 std::tm clientBegin[3] = {*std::localtime(&t)};
-
-/*int clientB_state = 0; //suspend
-int clientB_crawl = 0;
-int clientB_fail = 0;
-std::tm clientB_begin = *std::localtime(&t);;
-
-int clientC_state = 0;
-int clientC_crawl = 0;
-int clientC_fail = 0;
-std::tm clientC_begin = *std::localtime(&t);;*/
+std::string clientUrl[3];

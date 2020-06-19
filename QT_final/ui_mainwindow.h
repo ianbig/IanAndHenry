@@ -54,6 +54,8 @@ public:
     QPushButton *client2_switch;
     QLabel *client2_crawled_count;
     QLabel *client2_failure_count;
+    QLabel *client2_failure_rate;
+    QLabel *client2_url;
     QLabel *client2_crawled_time;
     QLabel *client2_begin_time;
     QWidget *client_text_widget;
@@ -63,6 +65,8 @@ public:
     QLabel *client_switch_text;
     QLabel *client_crawl_cnt_text;
     QLabel *client_failure_cnt_text;
+    QLabel *client_failure_rate;
+    QLabel *client_url;
     QLabel *client_crawled_time_text;
     QLabel *client_begin_time_text;
     QWidget *client3_widget;
@@ -72,6 +76,8 @@ public:
     QPushButton *client3_switch;
     QLabel *client3_crawled_count;
     QLabel *client3_failure_count;
+    QLabel *client3_failure_rate;
+    QLabel *client3_url;
     QLabel *client3_crawled_time;
     QLabel *client3_begin_time;
     QWidget *client1_widget;
@@ -81,6 +87,8 @@ public:
     QPushButton *client1_switch;
     QLabel *client1_crawled_count;
     QLabel *client1_failure_count;
+    QLabel *client1_failure_rate;
+    QLabel *client1_url;
     QLabel *client1_crawled_time;
     QLabel *client1_begin_time;
     QSpacerItem *verticalSpacer;
@@ -116,16 +124,16 @@ public:
     QGridLayout *gridLayout_2;
     QWidget *ptt_widget;
     QHBoxLayout *horizontalLayout_12;
-    QLabel *ptt_name;
-    QLabel *ptt_crawled_count;
-    QLabel *ptt_failed_count;
-    QLabel *ptt_failure_rate;
-    QWidget *yahoo_widget;
+    QLabel *ebc_name;
+    QLabel *ebc_crawled_count;
+    QLabel *ebc_failed_count;
+    QLabel *ebc_failure_rate;
+    QWidget *wind_widget;
     QHBoxLayout *horizontalLayout_17;
-    QLabel *yahoo_name;
-    QLabel *yahoo_crawled_count;
-    QLabel *yahoo_failure_count;
-    QLabel *yahoo_failure_rate;
+    QLabel *wind_name;
+    QLabel *wind_crawled_count;
+    QLabel *wind_failure_count;
+    QLabel *wind_failure_rate;
     QWidget *ettoday_widget;
     QHBoxLayout *horizontalLayout_15;
     QLabel *ettoday_website_name;
@@ -144,38 +152,34 @@ public:
     QScrollArea *server_info_content;
     QWidget *scrollAreaWidgetContents;
     QGridLayout *gridLayout;
-    QWidget *run_time_widget;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *run_time_text;
-    QLabel *run_time_val;
-    QWidget *hour_crawl_widget;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *hour_crawl_text;
-    QLabel *hour_crawl_val;
     QWidget *begin_time_widget;
     QHBoxLayout *horizontalLayout_9;
     QLabel *begin_time_text;
     QLabel *begin_time_val;
-    QWidget *day_crawl_widget;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *day_crawl_text;
-    QLabel *day_crawl_val;
     QWidget *failure_rate_widget;
     QHBoxLayout *horizontalLayout_5;
     QLabel *failure_rate_text;
     QLabel *failure_rate_val;
+    QWidget *average_url_widget;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *average_url_text;
+    QLabel *average_url_val;
     QWidget *failure_cnt_widget;
     QHBoxLayout *horizontalLayout_8;
     QLabel *failure_cnt_text;
     QLabel *failure_cnt_val;
-    QWidget *total_cnt_widget;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *total_cnt_text;
-    QLabel *total_cnt_val;
     QWidget *speed_widget;
     QHBoxLayout *horizontalLayout_10;
     QLabel *speed_text;
     QLabel *speed_val;
+    QWidget *run_time_widget;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *run_time_text;
+    QLabel *run_time_val;
+    QWidget *total_cnt_widget;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *total_cnt_text;
+    QLabel *total_cnt_val;
     QSpacerItem *horizontalSpacer_2;
     QSpacerItem *verticalSpacer_2;
     QMenuBar *menubar;
@@ -261,7 +265,7 @@ public:
         client_content->setWidgetResizable(true);
         client_grid = new QWidget();
         client_grid->setObjectName(QString::fromUtf8("client_grid"));
-        client_grid->setGeometry(QRect(0, 0, 1330, 236));
+        client_grid->setGeometry(QRect(0, 0, 1888, 236));
         gridLayout_3 = new QGridLayout(client_grid);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         client2_widget = new QWidget(client_grid);
@@ -323,6 +327,25 @@ public:
         client2_failure_count->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_20->addWidget(client2_failure_count);
+
+        client2_failure_rate = new QLabel(client2_widget);
+        client2_failure_rate->setObjectName(QString::fromUtf8("client2_failure_rate"));
+        client2_failure_rate->setFont(font1);
+        client2_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        client2_failure_rate->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_20->addWidget(client2_failure_rate);
+
+        client2_url = new QLabel(client2_widget);
+        client2_url->setObjectName(QString::fromUtf8("client2_url"));
+        client2_url->setMinimumSize(QSize(364, 0));
+        QFont font4;
+        font4.setPointSize(9);
+        client2_url->setFont(font4);
+        client2_url->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        client2_url->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_20->addWidget(client2_url);
 
         client2_crawled_time = new QLabel(client2_widget);
         client2_crawled_time->setObjectName(QString::fromUtf8("client2_crawled_time"));
@@ -399,6 +422,24 @@ public:
         client_failure_cnt_text->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_18->addWidget(client_failure_cnt_text);
+
+        client_failure_rate = new QLabel(client_text_widget);
+        client_failure_rate->setObjectName(QString::fromUtf8("client_failure_rate"));
+        client_failure_rate->setMinimumSize(QSize(182, 0));
+        client_failure_rate->setFont(font1);
+        client_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(186, 189, 182);"));
+        client_failure_rate->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_18->addWidget(client_failure_rate);
+
+        client_url = new QLabel(client_text_widget);
+        client_url->setObjectName(QString::fromUtf8("client_url"));
+        client_url->setMinimumSize(QSize(364, 0));
+        client_url->setFont(font1);
+        client_url->setStyleSheet(QString::fromUtf8("background-color: rgb(186, 189, 182);"));
+        client_url->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_18->addWidget(client_url);
 
         client_crawled_time_text = new QLabel(client_text_widget);
         client_crawled_time_text->setObjectName(QString::fromUtf8("client_crawled_time_text"));
@@ -479,6 +520,23 @@ public:
 
         horizontalLayout_21->addWidget(client3_failure_count);
 
+        client3_failure_rate = new QLabel(client3_widget);
+        client3_failure_rate->setObjectName(QString::fromUtf8("client3_failure_rate"));
+        client3_failure_rate->setFont(font1);
+        client3_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        client3_failure_rate->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(client3_failure_rate);
+
+        client3_url = new QLabel(client3_widget);
+        client3_url->setObjectName(QString::fromUtf8("client3_url"));
+        client3_url->setMinimumSize(QSize(364, 0));
+        client3_url->setFont(font4);
+        client3_url->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        client3_url->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_21->addWidget(client3_url);
+
         client3_crawled_time = new QLabel(client3_widget);
         client3_crawled_time->setObjectName(QString::fromUtf8("client3_crawled_time"));
         client3_crawled_time->setMinimumSize(QSize(182, 0));
@@ -553,6 +611,23 @@ public:
         client1_failure_count->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_19->addWidget(client1_failure_count);
+
+        client1_failure_rate = new QLabel(client1_widget);
+        client1_failure_rate->setObjectName(QString::fromUtf8("client1_failure_rate"));
+        client1_failure_rate->setFont(font1);
+        client1_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        client1_failure_rate->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_19->addWidget(client1_failure_rate);
+
+        client1_url = new QLabel(client1_widget);
+        client1_url->setObjectName(QString::fromUtf8("client1_url"));
+        client1_url->setMinimumSize(QSize(364, 0));
+        client1_url->setFont(font4);
+        client1_url->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        client1_url->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_19->addWidget(client1_url);
 
         client1_crawled_time = new QLabel(client1_widget);
         client1_crawled_time->setObjectName(QString::fromUtf8("client1_crawled_time"));
@@ -636,7 +711,7 @@ public:
         clientA_state = new QProgressBar(workload_grid);
         clientA_state->setObjectName(QString::fromUtf8("clientA_state"));
         clientA_state->setMinimumSize(QSize(200, 0));
-        clientA_state->setValue(100);
+        clientA_state->setValue(0);
         clientA_state->setOrientation(Qt::Vertical);
 
         gridLayout_4->addWidget(clientA_state, 0, 0, 1, 1);
@@ -683,9 +758,9 @@ public:
         progess_state_box->setObjectName(QString::fromUtf8("progess_state_box"));
         DatabaseConnection = new QLabel(progress);
         DatabaseConnection->setObjectName(QString::fromUtf8("DatabaseConnection"));
-        QFont font4;
-        font4.setPointSize(15);
-        DatabaseConnection->setFont(font4);
+        QFont font5;
+        font5.setPointSize(15);
+        DatabaseConnection->setFont(font5);
         DatabaseConnection->setStyleSheet(QString::fromUtf8("color: rgb(239, 41, 41)"));
         DatabaseConnection->setAlignment(Qt::AlignCenter);
 
@@ -700,7 +775,7 @@ public:
 
         ClientConnection = new QLabel(progress);
         ClientConnection->setObjectName(QString::fromUtf8("ClientConnection"));
-        ClientConnection->setFont(font4);
+        ClientConnection->setFont(font5);
         ClientConnection->setStyleSheet(QString::fromUtf8("color: rgb(239, 41, 41)"));
         ClientConnection->setAlignment(Qt::AlignCenter);
 
@@ -715,9 +790,9 @@ public:
 
         Crawling = new QLabel(progress);
         Crawling->setObjectName(QString::fromUtf8("Crawling"));
-        QFont font5;
-        font5.setPointSize(16);
-        Crawling->setFont(font5);
+        QFont font6;
+        font6.setPointSize(16);
+        Crawling->setFont(font6);
         Crawling->setStyleSheet(QString::fromUtf8("color: rgb(239, 41, 41)"));
         Crawling->setAlignment(Qt::AlignCenter);
 
@@ -732,7 +807,7 @@ public:
 
         Report = new QLabel(progress);
         Report->setObjectName(QString::fromUtf8("Report"));
-        Report->setFont(font5);
+        Report->setFont(font6);
         Report->setStyleSheet(QString::fromUtf8("color: rgb(239, 41, 41)"));
         Report->setAlignment(Qt::AlignCenter);
 
@@ -776,110 +851,110 @@ public:
         horizontalLayout_12 = new QHBoxLayout(ptt_widget);
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
         horizontalLayout_12->setContentsMargins(1, 1, 1, 1);
-        ptt_name = new QLabel(ptt_widget);
-        ptt_name->setObjectName(QString::fromUtf8("ptt_name"));
+        ebc_name = new QLabel(ptt_widget);
+        ebc_name->setObjectName(QString::fromUtf8("ebc_name"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(ptt_name->sizePolicy().hasHeightForWidth());
-        ptt_name->setSizePolicy(sizePolicy3);
-        ptt_name->setMinimumSize(QSize(182, 0));
-        ptt_name->setFont(font1);
-        ptt_name->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        ptt_name->setAlignment(Qt::AlignCenter);
+        sizePolicy3.setHeightForWidth(ebc_name->sizePolicy().hasHeightForWidth());
+        ebc_name->setSizePolicy(sizePolicy3);
+        ebc_name->setMinimumSize(QSize(182, 0));
+        ebc_name->setFont(font1);
+        ebc_name->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        ebc_name->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_12->addWidget(ptt_name);
+        horizontalLayout_12->addWidget(ebc_name);
 
-        ptt_crawled_count = new QLabel(ptt_widget);
-        ptt_crawled_count->setObjectName(QString::fromUtf8("ptt_crawled_count"));
-        sizePolicy3.setHeightForWidth(ptt_crawled_count->sizePolicy().hasHeightForWidth());
-        ptt_crawled_count->setSizePolicy(sizePolicy3);
-        ptt_crawled_count->setMinimumSize(QSize(182, 0));
-        ptt_crawled_count->setFont(font1);
-        ptt_crawled_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        ptt_crawled_count->setAlignment(Qt::AlignCenter);
+        ebc_crawled_count = new QLabel(ptt_widget);
+        ebc_crawled_count->setObjectName(QString::fromUtf8("ebc_crawled_count"));
+        sizePolicy3.setHeightForWidth(ebc_crawled_count->sizePolicy().hasHeightForWidth());
+        ebc_crawled_count->setSizePolicy(sizePolicy3);
+        ebc_crawled_count->setMinimumSize(QSize(182, 0));
+        ebc_crawled_count->setFont(font1);
+        ebc_crawled_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        ebc_crawled_count->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_12->addWidget(ptt_crawled_count);
+        horizontalLayout_12->addWidget(ebc_crawled_count);
 
-        ptt_failed_count = new QLabel(ptt_widget);
-        ptt_failed_count->setObjectName(QString::fromUtf8("ptt_failed_count"));
-        sizePolicy3.setHeightForWidth(ptt_failed_count->sizePolicy().hasHeightForWidth());
-        ptt_failed_count->setSizePolicy(sizePolicy3);
-        ptt_failed_count->setMinimumSize(QSize(182, 0));
-        ptt_failed_count->setFont(font1);
-        ptt_failed_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        ptt_failed_count->setAlignment(Qt::AlignCenter);
+        ebc_failed_count = new QLabel(ptt_widget);
+        ebc_failed_count->setObjectName(QString::fromUtf8("ebc_failed_count"));
+        sizePolicy3.setHeightForWidth(ebc_failed_count->sizePolicy().hasHeightForWidth());
+        ebc_failed_count->setSizePolicy(sizePolicy3);
+        ebc_failed_count->setMinimumSize(QSize(182, 0));
+        ebc_failed_count->setFont(font1);
+        ebc_failed_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        ebc_failed_count->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_12->addWidget(ptt_failed_count);
+        horizontalLayout_12->addWidget(ebc_failed_count);
 
-        ptt_failure_rate = new QLabel(ptt_widget);
-        ptt_failure_rate->setObjectName(QString::fromUtf8("ptt_failure_rate"));
-        sizePolicy3.setHeightForWidth(ptt_failure_rate->sizePolicy().hasHeightForWidth());
-        ptt_failure_rate->setSizePolicy(sizePolicy3);
-        ptt_failure_rate->setMinimumSize(QSize(182, 0));
-        ptt_failure_rate->setFont(font1);
-        ptt_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        ptt_failure_rate->setAlignment(Qt::AlignCenter);
+        ebc_failure_rate = new QLabel(ptt_widget);
+        ebc_failure_rate->setObjectName(QString::fromUtf8("ebc_failure_rate"));
+        sizePolicy3.setHeightForWidth(ebc_failure_rate->sizePolicy().hasHeightForWidth());
+        ebc_failure_rate->setSizePolicy(sizePolicy3);
+        ebc_failure_rate->setMinimumSize(QSize(182, 0));
+        ebc_failure_rate->setFont(font1);
+        ebc_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        ebc_failure_rate->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_12->addWidget(ptt_failure_rate);
+        horizontalLayout_12->addWidget(ebc_failure_rate);
 
 
         gridLayout_2->addWidget(ptt_widget, 2, 0, 1, 1);
 
-        yahoo_widget = new QWidget(website_info_grid);
-        yahoo_widget->setObjectName(QString::fromUtf8("yahoo_widget"));
-        sizePolicy1.setHeightForWidth(yahoo_widget->sizePolicy().hasHeightForWidth());
-        yahoo_widget->setSizePolicy(sizePolicy1);
-        yahoo_widget->setMinimumSize(QSize(0, 50));
-        horizontalLayout_17 = new QHBoxLayout(yahoo_widget);
+        wind_widget = new QWidget(website_info_grid);
+        wind_widget->setObjectName(QString::fromUtf8("wind_widget"));
+        sizePolicy1.setHeightForWidth(wind_widget->sizePolicy().hasHeightForWidth());
+        wind_widget->setSizePolicy(sizePolicy1);
+        wind_widget->setMinimumSize(QSize(0, 50));
+        horizontalLayout_17 = new QHBoxLayout(wind_widget);
         horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
         horizontalLayout_17->setContentsMargins(1, 1, 1, 1);
-        yahoo_name = new QLabel(yahoo_widget);
-        yahoo_name->setObjectName(QString::fromUtf8("yahoo_name"));
-        sizePolicy3.setHeightForWidth(yahoo_name->sizePolicy().hasHeightForWidth());
-        yahoo_name->setSizePolicy(sizePolicy3);
-        yahoo_name->setMinimumSize(QSize(182, 0));
-        yahoo_name->setFont(font1);
-        yahoo_name->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        yahoo_name->setAlignment(Qt::AlignCenter);
+        wind_name = new QLabel(wind_widget);
+        wind_name->setObjectName(QString::fromUtf8("wind_name"));
+        sizePolicy3.setHeightForWidth(wind_name->sizePolicy().hasHeightForWidth());
+        wind_name->setSizePolicy(sizePolicy3);
+        wind_name->setMinimumSize(QSize(182, 0));
+        wind_name->setFont(font1);
+        wind_name->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        wind_name->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_17->addWidget(yahoo_name);
+        horizontalLayout_17->addWidget(wind_name);
 
-        yahoo_crawled_count = new QLabel(yahoo_widget);
-        yahoo_crawled_count->setObjectName(QString::fromUtf8("yahoo_crawled_count"));
-        sizePolicy3.setHeightForWidth(yahoo_crawled_count->sizePolicy().hasHeightForWidth());
-        yahoo_crawled_count->setSizePolicy(sizePolicy3);
-        yahoo_crawled_count->setMinimumSize(QSize(182, 0));
-        yahoo_crawled_count->setFont(font1);
-        yahoo_crawled_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        yahoo_crawled_count->setAlignment(Qt::AlignCenter);
+        wind_crawled_count = new QLabel(wind_widget);
+        wind_crawled_count->setObjectName(QString::fromUtf8("wind_crawled_count"));
+        sizePolicy3.setHeightForWidth(wind_crawled_count->sizePolicy().hasHeightForWidth());
+        wind_crawled_count->setSizePolicy(sizePolicy3);
+        wind_crawled_count->setMinimumSize(QSize(182, 0));
+        wind_crawled_count->setFont(font1);
+        wind_crawled_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        wind_crawled_count->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_17->addWidget(yahoo_crawled_count);
+        horizontalLayout_17->addWidget(wind_crawled_count);
 
-        yahoo_failure_count = new QLabel(yahoo_widget);
-        yahoo_failure_count->setObjectName(QString::fromUtf8("yahoo_failure_count"));
-        sizePolicy3.setHeightForWidth(yahoo_failure_count->sizePolicy().hasHeightForWidth());
-        yahoo_failure_count->setSizePolicy(sizePolicy3);
-        yahoo_failure_count->setMinimumSize(QSize(182, 0));
-        yahoo_failure_count->setFont(font1);
-        yahoo_failure_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        yahoo_failure_count->setAlignment(Qt::AlignCenter);
+        wind_failure_count = new QLabel(wind_widget);
+        wind_failure_count->setObjectName(QString::fromUtf8("wind_failure_count"));
+        sizePolicy3.setHeightForWidth(wind_failure_count->sizePolicy().hasHeightForWidth());
+        wind_failure_count->setSizePolicy(sizePolicy3);
+        wind_failure_count->setMinimumSize(QSize(182, 0));
+        wind_failure_count->setFont(font1);
+        wind_failure_count->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        wind_failure_count->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_17->addWidget(yahoo_failure_count);
+        horizontalLayout_17->addWidget(wind_failure_count);
 
-        yahoo_failure_rate = new QLabel(yahoo_widget);
-        yahoo_failure_rate->setObjectName(QString::fromUtf8("yahoo_failure_rate"));
-        sizePolicy3.setHeightForWidth(yahoo_failure_rate->sizePolicy().hasHeightForWidth());
-        yahoo_failure_rate->setSizePolicy(sizePolicy3);
-        yahoo_failure_rate->setMinimumSize(QSize(182, 0));
-        yahoo_failure_rate->setFont(font1);
-        yahoo_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        yahoo_failure_rate->setAlignment(Qt::AlignCenter);
+        wind_failure_rate = new QLabel(wind_widget);
+        wind_failure_rate->setObjectName(QString::fromUtf8("wind_failure_rate"));
+        sizePolicy3.setHeightForWidth(wind_failure_rate->sizePolicy().hasHeightForWidth());
+        wind_failure_rate->setSizePolicy(sizePolicy3);
+        wind_failure_rate->setMinimumSize(QSize(182, 0));
+        wind_failure_rate->setFont(font1);
+        wind_failure_rate->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        wind_failure_rate->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_17->addWidget(yahoo_failure_rate);
+        horizontalLayout_17->addWidget(wind_failure_rate);
 
 
-        gridLayout_2->addWidget(yahoo_widget, 1, 0, 1, 1);
+        gridLayout_2->addWidget(wind_widget, 1, 0, 1, 1);
 
         ettoday_widget = new QWidget(website_info_grid);
         ettoday_widget->setObjectName(QString::fromUtf8("ettoday_widget"));
@@ -1021,76 +1096,11 @@ public:
         server_info_content->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 866, 460));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -99, 866, 404));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        run_time_widget = new QWidget(scrollAreaWidgetContents);
-        run_time_widget->setObjectName(QString::fromUtf8("run_time_widget"));
-        run_time_widget->setMinimumSize(QSize(0, 50));
-        run_time_widget->setStyleSheet(QString::fromUtf8(""));
-        horizontalLayout_4 = new QHBoxLayout(run_time_widget);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(1, 1, 1, 1);
-        run_time_text = new QLabel(run_time_widget);
-        run_time_text->setObjectName(QString::fromUtf8("run_time_text"));
-        sizePolicy3.setHeightForWidth(run_time_text->sizePolicy().hasHeightForWidth());
-        run_time_text->setSizePolicy(sizePolicy3);
-        run_time_text->setFont(font1);
-        run_time_text->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        run_time_text->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_4->addWidget(run_time_text);
-
-        run_time_val = new QLabel(run_time_widget);
-        run_time_val->setObjectName(QString::fromUtf8("run_time_val"));
-        sizePolicy3.setHeightForWidth(run_time_val->sizePolicy().hasHeightForWidth());
-        run_time_val->setSizePolicy(sizePolicy3);
-        run_time_val->setFont(font1);
-        run_time_val->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        run_time_val->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_4->addWidget(run_time_val);
-
-
-        gridLayout->addWidget(run_time_widget, 2, 0, 1, 1);
-
-        hour_crawl_widget = new QWidget(scrollAreaWidgetContents);
-        hour_crawl_widget->setObjectName(QString::fromUtf8("hour_crawl_widget"));
-        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(hour_crawl_widget->sizePolicy().hasHeightForWidth());
-        hour_crawl_widget->setSizePolicy(sizePolicy5);
-        hour_crawl_widget->setMinimumSize(QSize(0, 50));
-        hour_crawl_widget->setStyleSheet(QString::fromUtf8(""));
-        horizontalLayout_6 = new QHBoxLayout(hour_crawl_widget);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(1, 1, 1, 1);
-        hour_crawl_text = new QLabel(hour_crawl_widget);
-        hour_crawl_text->setObjectName(QString::fromUtf8("hour_crawl_text"));
-        sizePolicy3.setHeightForWidth(hour_crawl_text->sizePolicy().hasHeightForWidth());
-        hour_crawl_text->setSizePolicy(sizePolicy3);
-        hour_crawl_text->setFont(font1);
-        hour_crawl_text->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        hour_crawl_text->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_6->addWidget(hour_crawl_text);
-
-        hour_crawl_val = new QLabel(hour_crawl_widget);
-        hour_crawl_val->setObjectName(QString::fromUtf8("hour_crawl_val"));
-        sizePolicy3.setHeightForWidth(hour_crawl_val->sizePolicy().hasHeightForWidth());
-        hour_crawl_val->setSizePolicy(sizePolicy3);
-        hour_crawl_val->setFont(font1);
-        hour_crawl_val->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        hour_crawl_val->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_6->addWidget(hour_crawl_val);
-
-
-        gridLayout->addWidget(hour_crawl_widget, 6, 0, 1, 1);
-
         begin_time_widget = new QWidget(scrollAreaWidgetContents);
         begin_time_widget->setObjectName(QString::fromUtf8("begin_time_widget"));
         begin_time_widget->setMinimumSize(QSize(0, 50));
@@ -1120,38 +1130,6 @@ public:
 
 
         gridLayout->addWidget(begin_time_widget, 1, 0, 1, 1);
-
-        day_crawl_widget = new QWidget(scrollAreaWidgetContents);
-        day_crawl_widget->setObjectName(QString::fromUtf8("day_crawl_widget"));
-        sizePolicy5.setHeightForWidth(day_crawl_widget->sizePolicy().hasHeightForWidth());
-        day_crawl_widget->setSizePolicy(sizePolicy5);
-        day_crawl_widget->setMinimumSize(QSize(0, 50));
-        day_crawl_widget->setStyleSheet(QString::fromUtf8(""));
-        horizontalLayout_7 = new QHBoxLayout(day_crawl_widget);
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        horizontalLayout_7->setContentsMargins(1, 1, 1, 1);
-        day_crawl_text = new QLabel(day_crawl_widget);
-        day_crawl_text->setObjectName(QString::fromUtf8("day_crawl_text"));
-        sizePolicy3.setHeightForWidth(day_crawl_text->sizePolicy().hasHeightForWidth());
-        day_crawl_text->setSizePolicy(sizePolicy3);
-        day_crawl_text->setFont(font1);
-        day_crawl_text->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        day_crawl_text->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_7->addWidget(day_crawl_text);
-
-        day_crawl_val = new QLabel(day_crawl_widget);
-        day_crawl_val->setObjectName(QString::fromUtf8("day_crawl_val"));
-        sizePolicy3.setHeightForWidth(day_crawl_val->sizePolicy().hasHeightForWidth());
-        day_crawl_val->setSizePolicy(sizePolicy3);
-        day_crawl_val->setFont(font1);
-        day_crawl_val->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        day_crawl_val->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_7->addWidget(day_crawl_val);
-
-
-        gridLayout->addWidget(day_crawl_widget, 7, 0, 1, 1);
 
         failure_rate_widget = new QWidget(scrollAreaWidgetContents);
         failure_rate_widget->setObjectName(QString::fromUtf8("failure_rate_widget"));
@@ -1183,6 +1161,41 @@ public:
 
         gridLayout->addWidget(failure_rate_widget, 4, 0, 1, 1);
 
+        average_url_widget = new QWidget(scrollAreaWidgetContents);
+        average_url_widget->setObjectName(QString::fromUtf8("average_url_widget"));
+        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(average_url_widget->sizePolicy().hasHeightForWidth());
+        average_url_widget->setSizePolicy(sizePolicy5);
+        average_url_widget->setMinimumSize(QSize(0, 50));
+        average_url_widget->setStyleSheet(QString::fromUtf8(""));
+        horizontalLayout_6 = new QHBoxLayout(average_url_widget);
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        horizontalLayout_6->setContentsMargins(1, 1, 1, 1);
+        average_url_text = new QLabel(average_url_widget);
+        average_url_text->setObjectName(QString::fromUtf8("average_url_text"));
+        sizePolicy3.setHeightForWidth(average_url_text->sizePolicy().hasHeightForWidth());
+        average_url_text->setSizePolicy(sizePolicy3);
+        average_url_text->setFont(font1);
+        average_url_text->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        average_url_text->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_6->addWidget(average_url_text);
+
+        average_url_val = new QLabel(average_url_widget);
+        average_url_val->setObjectName(QString::fromUtf8("average_url_val"));
+        sizePolicy3.setHeightForWidth(average_url_val->sizePolicy().hasHeightForWidth());
+        average_url_val->setSizePolicy(sizePolicy3);
+        average_url_val->setFont(font1);
+        average_url_val->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        average_url_val->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_6->addWidget(average_url_val);
+
+
+        gridLayout->addWidget(average_url_widget, 6, 0, 1, 1);
+
         failure_cnt_widget = new QWidget(scrollAreaWidgetContents);
         failure_cnt_widget->setObjectName(QString::fromUtf8("failure_cnt_widget"));
         failure_cnt_widget->setMinimumSize(QSize(0, 50));
@@ -1213,36 +1226,6 @@ public:
 
         gridLayout->addWidget(failure_cnt_widget, 3, 0, 1, 1);
 
-        total_cnt_widget = new QWidget(scrollAreaWidgetContents);
-        total_cnt_widget->setObjectName(QString::fromUtf8("total_cnt_widget"));
-        total_cnt_widget->setMinimumSize(QSize(0, 50));
-        total_cnt_widget->setStyleSheet(QString::fromUtf8(""));
-        horizontalLayout_3 = new QHBoxLayout(total_cnt_widget);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(1, 1, 1, 1);
-        total_cnt_text = new QLabel(total_cnt_widget);
-        total_cnt_text->setObjectName(QString::fromUtf8("total_cnt_text"));
-        sizePolicy5.setHeightForWidth(total_cnt_text->sizePolicy().hasHeightForWidth());
-        total_cnt_text->setSizePolicy(sizePolicy5);
-        total_cnt_text->setFont(font1);
-        total_cnt_text->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        total_cnt_text->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_3->addWidget(total_cnt_text);
-
-        total_cnt_val = new QLabel(total_cnt_widget);
-        total_cnt_val->setObjectName(QString::fromUtf8("total_cnt_val"));
-        sizePolicy3.setHeightForWidth(total_cnt_val->sizePolicy().hasHeightForWidth());
-        total_cnt_val->setSizePolicy(sizePolicy3);
-        total_cnt_val->setFont(font1);
-        total_cnt_val->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
-        total_cnt_val->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_3->addWidget(total_cnt_val);
-
-
-        gridLayout->addWidget(total_cnt_widget, 0, 0, 1, 1);
-
         speed_widget = new QWidget(scrollAreaWidgetContents);
         speed_widget->setObjectName(QString::fromUtf8("speed_widget"));
         speed_widget->setMinimumSize(QSize(0, 50));
@@ -1272,6 +1255,66 @@ public:
 
 
         gridLayout->addWidget(speed_widget, 5, 0, 1, 1);
+
+        run_time_widget = new QWidget(scrollAreaWidgetContents);
+        run_time_widget->setObjectName(QString::fromUtf8("run_time_widget"));
+        run_time_widget->setMinimumSize(QSize(0, 50));
+        run_time_widget->setStyleSheet(QString::fromUtf8(""));
+        horizontalLayout_4 = new QHBoxLayout(run_time_widget);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(1, 1, 1, 1);
+        run_time_text = new QLabel(run_time_widget);
+        run_time_text->setObjectName(QString::fromUtf8("run_time_text"));
+        sizePolicy3.setHeightForWidth(run_time_text->sizePolicy().hasHeightForWidth());
+        run_time_text->setSizePolicy(sizePolicy3);
+        run_time_text->setFont(font1);
+        run_time_text->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        run_time_text->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_4->addWidget(run_time_text);
+
+        run_time_val = new QLabel(run_time_widget);
+        run_time_val->setObjectName(QString::fromUtf8("run_time_val"));
+        sizePolicy3.setHeightForWidth(run_time_val->sizePolicy().hasHeightForWidth());
+        run_time_val->setSizePolicy(sizePolicy3);
+        run_time_val->setFont(font1);
+        run_time_val->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        run_time_val->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_4->addWidget(run_time_val);
+
+
+        gridLayout->addWidget(run_time_widget, 2, 0, 1, 1);
+
+        total_cnt_widget = new QWidget(scrollAreaWidgetContents);
+        total_cnt_widget->setObjectName(QString::fromUtf8("total_cnt_widget"));
+        total_cnt_widget->setMinimumSize(QSize(0, 50));
+        total_cnt_widget->setStyleSheet(QString::fromUtf8(""));
+        horizontalLayout_3 = new QHBoxLayout(total_cnt_widget);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(1, 1, 1, 1);
+        total_cnt_text = new QLabel(total_cnt_widget);
+        total_cnt_text->setObjectName(QString::fromUtf8("total_cnt_text"));
+        sizePolicy5.setHeightForWidth(total_cnt_text->sizePolicy().hasHeightForWidth());
+        total_cnt_text->setSizePolicy(sizePolicy5);
+        total_cnt_text->setFont(font1);
+        total_cnt_text->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        total_cnt_text->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_3->addWidget(total_cnt_text);
+
+        total_cnt_val = new QLabel(total_cnt_widget);
+        total_cnt_val->setObjectName(QString::fromUtf8("total_cnt_val"));
+        sizePolicy3.setHeightForWidth(total_cnt_val->sizePolicy().hasHeightForWidth());
+        total_cnt_val->setSizePolicy(sizePolicy3);
+        total_cnt_val->setFont(font1);
+        total_cnt_val->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
+        total_cnt_val->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_3->addWidget(total_cnt_val);
+
+
+        gridLayout->addWidget(total_cnt_widget, 0, 0, 1, 1);
 
         server_info_content->setWidget(scrollAreaWidgetContents);
 
@@ -1317,10 +1360,12 @@ public:
         time->setText(QApplication::translate("MainWindow", "14 : 50", nullptr));
         clien_text->setText(QApplication::translate("MainWindow", "Client Info", nullptr));
         client2_name->setText(QApplication::translate("MainWindow", "Client B", nullptr));
-        client2_state->setText(QApplication::translate("MainWindow", "Suspended", nullptr));
+        client2_state->setText(QApplication::translate("MainWindow", "Stopped", nullptr));
         client2_switch->setText(QApplication::translate("MainWindow", "Suspend / Resume", nullptr));
         client2_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         client2_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        client2_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
+        client2_url->setText(QApplication::translate("MainWindow", "http", nullptr));
         client2_crawled_time->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
         client2_begin_time->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
         client_name_text->setText(QApplication::translate("MainWindow", "Client Name", nullptr));
@@ -1328,6 +1373,8 @@ public:
         client_switch_text->setText(QApplication::translate("MainWindow", "Switch", nullptr));
         client_crawl_cnt_text->setText(QApplication::translate("MainWindow", "Crawled Count", nullptr));
         client_failure_cnt_text->setText(QApplication::translate("MainWindow", "Failure Count", nullptr));
+        client_failure_rate->setText(QApplication::translate("MainWindow", "Failure Rate", nullptr));
+        client_url->setText(QApplication::translate("MainWindow", "URL", nullptr));
         client_crawled_time_text->setText(QApplication::translate("MainWindow", "Crawled Time", nullptr));
         client_begin_time_text->setText(QApplication::translate("MainWindow", "Begin Time", nullptr));
         client3_name->setText(QApplication::translate("MainWindow", "Client C", nullptr));
@@ -1335,13 +1382,17 @@ public:
         client3_switch->setText(QApplication::translate("MainWindow", "Suspend / Resume", nullptr));
         client3_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         client3_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        client3_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
+        client3_url->setText(QApplication::translate("MainWindow", "http", nullptr));
         client3_crawled_time->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
         client3_begin_time->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
         client1_name->setText(QApplication::translate("MainWindow", "Client A", nullptr));
-        client1_state->setText(QApplication::translate("MainWindow", "Running", nullptr));
+        client1_state->setText(QApplication::translate("MainWindow", "Stopped", nullptr));
         client1_switch->setText(QApplication::translate("MainWindow", "Suspend / Resume", nullptr));
         client1_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         client1_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        client1_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
+        client1_url->setText(QApplication::translate("MainWindow", "http", nullptr));
         client1_crawled_time->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
         client1_begin_time->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
         workload_text->setText(QApplication::translate("MainWindow", "Workload", nullptr));
@@ -1353,14 +1404,14 @@ public:
         Crawling->setText(QApplication::translate("MainWindow", "Crawling", nullptr));
         Report->setText(QApplication::translate("MainWindow", "Report", nullptr));
         website_text->setText(QApplication::translate("MainWindow", "Website Info", nullptr));
-        ptt_name->setText(QApplication::translate("MainWindow", "Ptt", nullptr));
-        ptt_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
-        ptt_failed_count->setText(QApplication::translate("MainWindow", "0", nullptr));
-        ptt_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
-        yahoo_name->setText(QApplication::translate("MainWindow", "Yahoo News", nullptr));
-        yahoo_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
-        yahoo_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
-        yahoo_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
+        ebc_name->setText(QApplication::translate("MainWindow", "\346\235\261\346\243\256EBC", nullptr));
+        ebc_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        ebc_failed_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        ebc_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
+        wind_name->setText(QApplication::translate("MainWindow", "\351\242\250\345\202\263\345\252\222", nullptr));
+        wind_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        wind_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
+        wind_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
         ettoday_website_name->setText(QApplication::translate("MainWindow", "Ettoday", nullptr));
         ettoday_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         ettoday_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
@@ -1370,22 +1421,20 @@ public:
         category_failure_count->setText(QApplication::translate("MainWindow", "Failure Count", nullptr));
         category_crawled_time->setText(QApplication::translate("MainWindow", "Failure Rate", nullptr));
         server_info_text->setText(QApplication::translate("MainWindow", "Server Info", nullptr));
-        run_time_text->setText(QApplication::translate("MainWindow", "Run Time :", nullptr));
-        run_time_val->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
-        hour_crawl_text->setText(QApplication::translate("MainWindow", "Hour Crawled Count :", nullptr));
-        hour_crawl_val->setText(QApplication::translate("MainWindow", "0", nullptr));
         begin_time_text->setText(QApplication::translate("MainWindow", "Begin Time : ", nullptr));
         begin_time_val->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
-        day_crawl_text->setText(QApplication::translate("MainWindow", "Day Crawled Count :", nullptr));
-        day_crawl_val->setText(QApplication::translate("MainWindow", "0", nullptr));
         failure_rate_text->setText(QApplication::translate("MainWindow", "Failure Rate :", nullptr));
         failure_rate_val->setText(QApplication::translate("MainWindow", "0.000", nullptr));
+        average_url_text->setText(QApplication::translate("MainWindow", "Average URL length :", nullptr));
+        average_url_val->setText(QApplication::translate("MainWindow", "0", nullptr));
         failure_cnt_text->setText(QApplication::translate("MainWindow", "Failure Count :", nullptr));
         failure_cnt_val->setText(QApplication::translate("MainWindow", "0", nullptr));
-        total_cnt_text->setText(QApplication::translate("MainWindow", "Total Count :", nullptr));
-        total_cnt_val->setText(QApplication::translate("MainWindow", "0", nullptr));
         speed_text->setText(QApplication::translate("MainWindow", "Speed (per minute) :", nullptr));
         speed_val->setText(QApplication::translate("MainWindow", "0", nullptr));
+        run_time_text->setText(QApplication::translate("MainWindow", "Run Time :", nullptr));
+        run_time_val->setText(QApplication::translate("MainWindow", "0 : 00 : 00", nullptr));
+        total_cnt_text->setText(QApplication::translate("MainWindow", "Total Count :", nullptr));
+        total_cnt_val->setText(QApplication::translate("MainWindow", "0", nullptr));
         menuOption->setTitle(QApplication::translate("MainWindow", "Option", nullptr));
     } // retranslateUi
 

@@ -19,6 +19,8 @@ public slots:
     void update();
 
 private:
+    int total_url_len;
+    int total_url_cnt;
     Ui::MainWindow *ui;
     bool flag; // first set
     void setTime(std::tm*);
