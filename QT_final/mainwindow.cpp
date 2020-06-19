@@ -6,6 +6,7 @@
 #include <ctime>
 #include <QTimer>
 #include <iostream>
+#include <fstream>
 #include <thread>
 
 void thread_function(){
@@ -31,6 +32,28 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start(1000);
     std::thread t(&thread_function);
     t.detach();
+
+    /**Read from log.txt */
+    std::string line;
+    std::ifstream log ("log.txt");
+    if (log.is_open()) {
+        getline (log,line);
+        wind_cnt = atoi(line.c_str());
+        getline (log,line);
+        wind_fail = atoi(line.c_str());
+        getline (log,line);
+        ebc_cnt = atoi(line.c_str());
+        getline (log,line);
+        ebc_fail = atoi(line.c_str());
+        getline (log,line);
+        ettoday_cnt = atoi(line.c_str());
+        getline (log,line);
+        ettoday_fail = atoi(line.c_str());
+        log.close();
+    }
+    else {
+        std::cerr << "fail to read log.txt" << std::endl;
+    }
 }
 
 MainWindow::~MainWindow()
@@ -54,10 +77,31 @@ void MainWindow::update() {
     setProgress();
     setWebsite();
     if (flag) {
+
         setServerInfo(now);
         setClientInfo(now);
     }
     setWorkload();
+}
+
+void MainWindow::A_state_change() {
+    if (clientState[0]==1)
+        clientState[0]=2;
+    else if (clientState[0]==2)
+        clientState[0]=1;
+}
+
+void MainWindow::B_state_change() {
+    if (clientState[1]==1)
+        clientState[1]=2;
+    else if (clientState[1]==2)
+        clientState[1]=1;
+}
+void MainWindow::C_state_change() {
+    if (clientState[2]==1)
+        clientState[2]=2;
+    else if (clientState[2]==2)
+        clientState[2]=1;
 }
 
 /** Private set function */
@@ -121,22 +165,29 @@ void MainWindow::setWorkload() {
 }
 
 void MainWindow::setWebsite() {
+    std::ofstream log ("log.txt");
     ui->wind_crawled_count->setText(QString::number(wind_cnt));
+    log << wind_cnt << std::endl;
     ui->wind_failure_count->setText(QString::number(wind_fail));
+    log << wind_fail << std::endl;
     if ((wind_cnt+wind_fail)==0)
         ui->wind_failure_rate->setText(QString::number(0));
     else
         ui->wind_failure_rate->setText(QString::number((double)wind_fail/(double)wind_cnt));
 
     ui->ebc_crawled_count->setText(QString::number(ebc_cnt));
+    log << ebc_cnt << std::endl;
     ui->ebc_failed_count->setText(QString::number(ebc_fail));
+    log << ebc_fail << std::endl;
     if ((ebc_cnt+ebc_fail)==0)
         ui->ebc_failure_rate->setText(QString::number(0));
     else
         ui->ebc_failure_rate->setText(QString::number((double)ebc_fail/(double)ebc_cnt));
 
     ui->ettoday_crawled_count->setText(QString::number(ettoday_cnt));
+    log << ettoday_cnt << std::endl;
     ui->ettoday_failure_count->setText(QString::number(ettoday_fail));
+    log << ettoday_fail << std::endl;
     if ((ettoday_cnt+ettoday_fail)==0)
         ui->ettoday_failure_rate->setText(QString::number(0));
     else
@@ -148,7 +199,7 @@ void MainWindow::setClientInfo(std::tm* now) {
     double diff = difftime(mktime(now), mktime(&clientBegin[0]));
     ui->client1_name->setText(QString::fromStdString(clientA_name));
     ui->client1_state->setText(QString::fromStdString(client_state[clientState[0]]));
-    if (ui->client1_crawled_count->text() != QString::number(clientCrawl[0])) {
+    if (ui->client1_crawled_count->text() != QString::number(clientCrawl[0]) && clientState[0]==1) {
         ui->client1_crawled_count->setText(QString::number(clientCrawl[0]));
         ui->client1_failure_count->setText(QString::number(clientFail[0]));
         total_url_cnt++;
@@ -168,7 +219,7 @@ void MainWindow::setClientInfo(std::tm* now) {
     diff = difftime(mktime(now), mktime(&clientBegin[1]));
     ui->client2_name->setText(QString::fromStdString(clientB_name));
     ui->client2_state->setText(QString::fromStdString(client_state[clientState[1]]));
-    if (ui->client2_crawled_count->text() != QString::number(clientCrawl[1])) {
+    if (ui->client2_crawled_count->text() != QString::number(clientCrawl[1]) && clientState[1]==1) {
         ui->client2_crawled_count->setText(QString::number(clientCrawl[1]));
         ui->client2_failure_count->setText(QString::number(clientFail[1]));
         total_url_cnt++;
@@ -188,7 +239,7 @@ void MainWindow::setClientInfo(std::tm* now) {
     diff = difftime(mktime(now), mktime(&clientBegin[2]));
     ui->client3_name->setText(QString::fromStdString(clientC_name));
     ui->client3_state->setText(QString::fromStdString(client_state[clientState[2]]));
-    if (ui->client3_crawled_count->text() != QString::number(clientCrawl[2])) {
+    if (ui->client3_crawled_count->text() != QString::number(clientCrawl[2]) && clientState[2]==1) {
         ui->client3_crawled_count->setText(QString::number(clientCrawl[2]));
         ui->client3_failure_count->setText(QString::number(clientFail[2]));
         total_url_cnt++;
@@ -222,3 +273,18 @@ QString MainWindow::getTime(){
 }
 
 
+
+void MainWindow::on_client1_switch_clicked()
+{
+    A_state_change();
+}
+
+void MainWindow::on_client2_switch_clicked()
+{
+    B_state_change();
+}
+
+void MainWindow::on_client3_switch_clicked()
+{
+    C_state_change();
+}

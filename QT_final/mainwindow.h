@@ -18,6 +18,13 @@ public:
 public slots:
     void update();
 
+private slots:
+    void on_client1_switch_clicked();
+
+    void on_client2_switch_clicked();
+
+    void on_client3_switch_clicked();
+
 private:
     int total_url_len;
     int total_url_cnt;
@@ -31,5 +38,8 @@ private:
     void setClientInfo(std::tm*);
     QString date2qstring(std::tm*);
     QString time2qstring(std::tm*);
+    void A_state_change();
+    void B_state_change();
+    void C_state_change();
 };
 #endif // MAINWINDOW_H

@@ -7,6 +7,7 @@ int main() {
 	sockClient *sc = new sockClient();
 	std::string tmp = "hehe";
 	int control;
+	//must do check()
 	sc->check();
 	while (1) {
 		printf("Please type in a number to test sending message (0: wind, 1: ebc, 2: ettoday)\n> ");
