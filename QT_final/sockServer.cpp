@@ -16,6 +16,30 @@
 
 static std::time_t t = std::time(nullptr);
 
+ssize_t recv_all(int fd, void* buf, size_t buf_len) {
+    for(size_t len = buf_len; len;) {
+        ssize_t r = ::recv(fd, buf, len, 0);
+        if(r <= 0)
+            return r;
+        buf = static_cast<char*>(buf) + r;
+        len -= r;
+    }
+    return buf_len;
+}
+
+std::string recv_string(int fd) {
+    ssize_t r;
+    // Receive message length in network byte order.
+    uint32_t len;
+    if((r = recv_all(fd, &len, sizeof len)) <= 0)
+        throw std::runtime_error("recv_all 1");
+    len = ntohl(len);
+    // Receive the message.
+    std::string msg(len, '\0');
+    if(len && (r = recv_all(fd, &msg[0], len)) <= 0)
+        throw std::runtime_error("recv_all 2");
+    return msg;
+}
 
 sockServer::sockServer()
 {
@@ -29,6 +53,7 @@ sockServer::sockServer()
     on = 1;
 
     /* fd set initialized and set */
+    for (int i=0; i<30; i++) client_socket[i]=0;
     FD_ZERO(&active_set);
     
     /* socket created */
@@ -118,6 +143,7 @@ void sockServer::run() {
         return;
     }
     std::cout << "Server starts connection" << std::endl;
+    //int maxfd, sd, activity, new_socket, i;
     while(1) {
         read_set = active_set;
         if (select(FD_SETSIZE, &read_set, NULL, NULL, NULL) < 0) {
@@ -125,8 +151,6 @@ void sockServer::run() {
             break;
         }
         for (int fd=0; fd<FD_SETSIZE; fd++) {
-            if (sockServerStop)
-                return;
             if (FD_ISSET(fd, &read_set)) { // fd in set
 
                 if (fd == serverfd) { //server: be able to connect new client
@@ -188,42 +212,54 @@ void sockServer::run() {
 }
 
 int sockServer::read_from_client(int fd) {
-    char buf[MAX_MSG];
-    int nbytes = recv(fd, buf, MAX_MSG, 0);
-    if (nbytes < 0) {
+    //char buf[MAX_MSG];
+    std::string str=recv_string(fd);
+    int nbytes = str.length();
         perror("read_from_client: read");
-        return nbytes;
-        //exit(EXIT_FAILURE);
-    }
-    else if(nbytes == 0)
-        return -1;
+    /*while (check < nbytes) {
+        nbytes = recv(fd, buf, MAX_MSG, 0);
+        if (nbytes < 0) {
+            perror("read_from_client: read");
+            return nbytes;
+            //exit(EXIT_FAILURE);
+        }
+        else if(nbytes == 0)
+            return -1;
+        else {
+            check += nbytes;
+            tmp = buf;
+            str += tmp;
+            std::cout << "recv " << nbytes << " bytes" << std::endl;
+        }
+    }*/
     for (int i=0; i<3; i++) {
         if (m[i] == fd) {
             int status, news;
             char url[256];
-            bool fail_flag = false;
-            sscanf(buf, "%d %d %s", &status, &news, url);
+            sscanf(str.c_str(), "%d %d %s", &status, &news, url);
             if (status == 0) { // 0: false
                 clientFail[i]++;
                 failure_count++;
-                fail_flag = true;
-            }
-            switch (news) {
-            case 0:     //wind
-                if (fail_flag)
+                if (news == 0) {
                     wind_fail++;
-                wind_cnt++;
-                break;
-            case 1:     //ebc
-                if (fail_flag)
+                    wind_cnt++;
+                }
+                else if (news == 1) {
                     ebc_fail++;
-                ebc_cnt++;
-                break;
-            case 2:     //ettoday
-                if (fail_flag)
+                    ebc_cnt++;
+                }
+                else {
                     ettoday_fail++;
-                ettoday_cnt++;
-                break;
+                    ettoday_cnt++;
+                }
+            }
+            else {
+                if (news == 0)
+                    wind_cnt++;
+                else if (news == 1)
+                    ebc_cnt++;
+                else
+                    ettoday_cnt++;
             }
             clientUrl[i] = std::string(url);
             clientCrawl[i]++;
@@ -231,6 +267,6 @@ int sockServer::read_from_client(int fd) {
             break;
         }
     }
-    std::cerr << "Server: got message from " << fd << " : \n" << buf << std::endl;
+    std::cerr << "Server: got message from " << fd << " : \n" << str << std::endl;
     return nbytes;
 }

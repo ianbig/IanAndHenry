@@ -13,6 +13,7 @@
 #include <iostream>
 #include  <arpa/inet.h>
 #include <sys/uio.h>
+#include <atomic>
 
 #include <map>
 
@@ -21,6 +22,7 @@ class sockServer
 private:
     std::map<int, int> m;
     int MAX_CLIENT, MAX_MSG;
+    int client_socket[30];
     int serverfd, clientfd;
     int bind_state, listen_state;
     int on;

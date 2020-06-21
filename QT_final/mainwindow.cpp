@@ -58,6 +58,21 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    std::ofstream log ("log.txt");
+    log << wind_cnt << std::endl;
+    log << wind_fail << std::endl;
+    log << ebc_cnt << std::endl;
+    log << ebc_fail << std::endl;
+    log << ettoday_cnt << std::endl;
+    log << ettoday_fail << std::endl;
+    std::cout << wind_cnt << std::endl;
+    std::cout << wind_fail << std::endl;
+    std::cout << ebc_cnt << std::endl;
+    std::cout << ebc_fail << std::endl;
+    std::cout << ettoday_cnt << std::endl;
+    std::cout << ettoday_fail << std::endl;
+    log.close();
+
     sockServerStop = true;
     delete ui;
 }
@@ -165,29 +180,22 @@ void MainWindow::setWorkload() {
 }
 
 void MainWindow::setWebsite() {
-    std::ofstream log ("log.txt");
     ui->wind_crawled_count->setText(QString::number(wind_cnt));
-    log << wind_cnt << std::endl;
     ui->wind_failure_count->setText(QString::number(wind_fail));
-    log << wind_fail << std::endl;
     if ((wind_cnt+wind_fail)==0)
         ui->wind_failure_rate->setText(QString::number(0));
     else
         ui->wind_failure_rate->setText(QString::number((double)wind_fail/(double)wind_cnt));
 
     ui->ebc_crawled_count->setText(QString::number(ebc_cnt));
-    log << ebc_cnt << std::endl;
     ui->ebc_failed_count->setText(QString::number(ebc_fail));
-    log << ebc_fail << std::endl;
     if ((ebc_cnt+ebc_fail)==0)
         ui->ebc_failure_rate->setText(QString::number(0));
     else
         ui->ebc_failure_rate->setText(QString::number((double)ebc_fail/(double)ebc_cnt));
 
     ui->ettoday_crawled_count->setText(QString::number(ettoday_cnt));
-    log << ettoday_cnt << std::endl;
     ui->ettoday_failure_count->setText(QString::number(ettoday_fail));
-    log << ettoday_fail << std::endl;
     if ((ettoday_cnt+ettoday_fail)==0)
         ui->ettoday_failure_rate->setText(QString::number(0));
     else

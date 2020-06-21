@@ -1,4 +1,5 @@
 #include "config.h"
+#include <atomic>
 
 /**Porgress */
 bool database_connection = true;
@@ -24,7 +25,7 @@ int total_B = 100000;
 int total_C = 100000;
 
 /**Website info */
-int wind_cnt = 0;
+int wind_cnt;
 int wind_fail = 0;
 std::tm wind_begin = *std::localtime(&t);;
 

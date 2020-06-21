@@ -191,7 +191,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setEnabled(true);
-        MainWindow->resize(1980, 900);
+        MainWindow->resize(1680, 1050);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -211,7 +211,7 @@ public:
 
         timezone = new QWidget(centralwidget);
         timezone->setObjectName(QString::fromUtf8("timezone"));
-        timezone->setMinimumSize(QSize(500, 150));
+        timezone->setMinimumSize(QSize(400, 150));
         timezone->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout = new QVBoxLayout(timezone);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -247,7 +247,7 @@ public:
 
         client = new QWidget(centralwidget);
         client->setObjectName(QString::fromUtf8("client"));
-        client->setMinimumSize(QSize(900, 300));
+        client->setMinimumSize(QSize(800, 300));
         client->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_9 = new QVBoxLayout(client);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
@@ -265,7 +265,7 @@ public:
         client_content->setWidgetResizable(true);
         client_grid = new QWidget();
         client_grid->setObjectName(QString::fromUtf8("client_grid"));
-        client_grid->setGeometry(QRect(0, 0, 1888, 236));
+        client_grid->setGeometry(QRect(0, 0, 1888, 282));
         gridLayout_3 = new QGridLayout(client_grid);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         client2_widget = new QWidget(client_grid);
@@ -663,7 +663,7 @@ public:
 
         workload = new QWidget(centralwidget);
         workload->setObjectName(QString::fromUtf8("workload"));
-        workload->setMinimumSize(QSize(900, 300));
+        workload->setMinimumSize(QSize(800, 300));
         workload->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_7 = new QVBoxLayout(workload);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
@@ -679,7 +679,7 @@ public:
         workload_content->setWidgetResizable(true);
         workload_grid = new QWidget();
         workload_grid->setObjectName(QString::fromUtf8("workload_grid"));
-        workload_grid->setGeometry(QRect(0, 0, 880, 245));
+        workload_grid->setGeometry(QRect(0, 0, 780, 296));
         gridLayout_4 = new QGridLayout(workload_grid);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         clientC_state = new QProgressBar(workload_grid);
@@ -741,7 +741,7 @@ public:
 
         progress = new QWidget(centralwidget);
         progress->setObjectName(QString::fromUtf8("progress"));
-        progress->setMinimumSize(QSize(1000, 150));
+        progress->setMinimumSize(QSize(800, 150));
         progress->setAutoFillBackground(false);
         progress->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         horizontalLayout = new QHBoxLayout(progress);
@@ -824,7 +824,7 @@ public:
 
         website = new QWidget(centralwidget);
         website->setObjectName(QString::fromUtf8("website"));
-        website->setMinimumSize(QSize(900, 300));
+        website->setMinimumSize(QSize(800, 300));
         website->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_8 = new QVBoxLayout(website);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
@@ -840,7 +840,7 @@ public:
         website_info_content->setWidgetResizable(true);
         website_info_grid = new QWidget();
         website_info_grid->setObjectName(QString::fromUtf8("website_info_grid"));
-        website_info_grid->setGeometry(QRect(0, 0, 1028, 305));
+        website_info_grid->setGeometry(QRect(0, 0, 828, 404));
         gridLayout_2 = new QGridLayout(website_info_grid);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         ptt_widget = new QWidget(website_info_grid);
@@ -1080,7 +1080,7 @@ public:
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(server_info->sizePolicy().hasHeightForWidth());
         server_info->setSizePolicy(sizePolicy4);
-        server_info->setMinimumSize(QSize(900, 300));
+        server_info->setMinimumSize(QSize(800, 300));
         server_info->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_3 = new QVBoxLayout(server_info);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -1096,7 +1096,7 @@ public:
         server_info_content->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, -99, 866, 404));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 404));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
@@ -1334,7 +1334,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1980, 22));
+        menubar->setGeometry(QRect(0, 0, 1680, 22));
         menuOption = new QMenu(menubar);
         menuOption->setObjectName(QString::fromUtf8("menuOption"));
         MainWindow->setMenuBar(menubar);
@@ -1404,7 +1404,7 @@ public:
         Crawling->setText(QApplication::translate("MainWindow", "Crawling", nullptr));
         Report->setText(QApplication::translate("MainWindow", "Report", nullptr));
         website_text->setText(QApplication::translate("MainWindow", "Website Info", nullptr));
-        ebc_name->setText(QApplication::translate("MainWindow", "\346\235\261\346\243\256EBC", nullptr));
+        ebc_name->setText(QApplication::translate("MainWindow", "\346\226\260\351\240\255\346\256\274 newtalk", nullptr));
         ebc_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         ebc_failed_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         ebc_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
@@ -1412,7 +1412,7 @@ public:
         wind_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         wind_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         wind_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));
-        ettoday_website_name->setText(QApplication::translate("MainWindow", "Ettoday", nullptr));
+        ettoday_website_name->setText(QApplication::translate("MainWindow", "Ettoday \346\226\260\350\201\236\351\233\262", nullptr));
         ettoday_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         ettoday_failure_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         ettoday_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));

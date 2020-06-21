@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1980</width>
-    <height>900</height>
+    <width>1680</width>
+    <height>1050</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -50,7 +50,7 @@
      <widget class="QWidget" name="timezone" native="true">
       <property name="minimumSize">
        <size>
-        <width>500</width>
+        <width>400</width>
         <height>150</height>
        </size>
       </property>
@@ -110,7 +110,7 @@
      <widget class="QWidget" name="client" native="true">
       <property name="minimumSize">
        <size>
-        <width>900</width>
+        <width>800</width>
         <height>300</height>
        </size>
       </property>
@@ -144,7 +144,7 @@
             <x>0</x>
             <y>0</y>
             <width>1888</width>
-            <height>236</height>
+            <height>282</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_3">
@@ -1162,7 +1162,7 @@
      <widget class="QWidget" name="workload" native="true">
       <property name="minimumSize">
        <size>
-        <width>900</width>
+        <width>800</width>
         <height>300</height>
        </size>
       </property>
@@ -1195,8 +1195,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>880</width>
-            <height>245</height>
+            <width>780</width>
+            <height>296</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_4">
@@ -1322,7 +1322,7 @@
      <widget class="QWidget" name="progress" native="true">
       <property name="minimumSize">
        <size>
-        <width>1000</width>
+        <width>800</width>
         <height>150</height>
        </size>
       </property>
@@ -1448,7 +1448,7 @@
      <widget class="QWidget" name="website" native="true">
       <property name="minimumSize">
        <size>
-        <width>900</width>
+        <width>800</width>
         <height>300</height>
        </size>
       </property>
@@ -1481,8 +1481,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1028</width>
-            <height>305</height>
+            <width>828</width>
+            <height>404</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
@@ -1536,7 +1536,7 @@
                  <string notr="true">background-color: rgb(211, 215, 207);</string>
                 </property>
                 <property name="text">
-                 <string>東森EBC</string>
+                 <string>新頭殼 newtalk</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -1836,7 +1836,7 @@
                  <string notr="true">background-color: rgb(211, 215, 207);</string>
                 </property>
                 <property name="text">
-                 <string>Ettoday</string>
+                 <string>Ettoday 新聞雲</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2103,7 +2103,7 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>900</width>
+        <width>800</width>
         <height>300</height>
        </size>
       </property>
@@ -2135,8 +2135,8 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-99</y>
-            <width>866</width>
+            <y>0</y>
+            <width>780</width>
             <height>404</height>
            </rect>
           </property>
@@ -2724,7 +2724,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1980</width>
+     <width>1680</width>
      <height>22</height>
     </rect>
    </property>

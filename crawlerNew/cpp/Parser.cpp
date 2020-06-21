@@ -16,6 +16,7 @@ Parser::Parser() {
     whiteList.push_back("https.*view[\\/|\\d|-]*");
     blackList.push_back("facebook");
     blackList.push_back("instagram");
+    sc = new sockClient();
 }
 
 // 0 means success fetch; -1 means blackList website not fetch
@@ -60,13 +61,11 @@ int Parser::fetch(const char *url, int news_type) {
         res = curl_easy_perform(fetcher);
         if(res == CURLE_OK) {
             /* send back information to craweler UI */
-            sockClient *sc = new sockClient();
             sc->check();
             sc->send_message(1, news_type, url);
         }
         else {
             /* send back information to craweler UI */
-            sockClient *sc = new sockClient();
             sc->check();
             sc->send_message(0, news_type, url);
         }

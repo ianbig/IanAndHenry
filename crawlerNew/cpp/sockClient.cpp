@@ -1,4 +1,28 @@
 #include "sockClient.h"
+
+ssize_t send_all(int fd, void const* buf, size_t buf_len) {
+    for(size_t len = buf_len; len;) {
+        ssize_t r = ::send(fd, buf, len, 0);
+        if(r <= 0)
+            return r;
+        buf = static_cast<char const*>(buf) + r;
+        len -= r;
+    }
+    return buf_len;
+}
+
+void send_string(int fd, std::string const& msg) {
+    ssize_t r;
+    // Send message length.
+    uint32_t len = msg.size();
+    len = htonl(len); // In network byte order.
+    if((r = send_all(fd, &len, sizeof len)) < 0)
+        throw std::runtime_error("send_all 1");
+    // Send the message.
+    if((r = send_all(fd, msg.data(), msg.size())) < 0)
+        throw std::runtime_error("send_all 2");
+}
+
 sockClient::sockClient()
 {
     MAX_MSG = 512;
@@ -52,8 +76,9 @@ void sockClient::_check() {
 void sockClient::send_message(int status, int news_type, std::string url) {
 	if (runnable) {
 		std::string str = std::to_string(status) + " " + std::to_string(news_type) +  " " + url;
-		if (write(clientfd, str.c_str(), sizeof(str)) < 0)
-			std::cerr << "cannot send" << std::endl;
+        send_string(clientfd, str);
+		/*if (write(clientfd, str.c_str(), sizeof(str)) < 0)
+			std::cerr << "cannot send" << std::endl;*/
 	}
 	else
 		std::cerr << "please use check() before sending messages" << std::endl;

@@ -3,6 +3,7 @@
 
 #include <ctime>
 #include <string>
+#include <atomic>
 
 extern bool sockServerStop;
 

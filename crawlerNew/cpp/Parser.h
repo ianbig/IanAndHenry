@@ -121,6 +121,7 @@ class Parser {
     std::vector<std::string> Parser_Master_Cache; // cache between filter and seed.log
     DataBase tb;
     size_t size_parser_master_cache; // size of cache between filter and seed.log
+    sockClient *sc;
 
 public:
     Parser();
