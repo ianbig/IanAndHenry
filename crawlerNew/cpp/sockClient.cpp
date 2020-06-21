@@ -37,10 +37,6 @@ void sockClient::check() {
     else
         std::cerr << "V connect to server successfully" << std::endl;
     
-    if (runnable)
-        std::cerr << "Please use \"send_message(status, news_type, url)." << std::endl;
-    else
-        std::cerr << "Please rerun the class to try again." << std::endl;
     
 }
 

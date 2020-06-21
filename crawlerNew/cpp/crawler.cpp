@@ -31,19 +31,19 @@ int crawler::start(int news_type) {
     if(news_type == 0) {
         seed_file = "./DB/storm_seed.log";
         uncomit_file = "./DB/storm_uncommit.log";
-        record_file = "./storm.rec";
+        record_file = "./DB/storm.rec";
     }
 
     else if(news_type == 1) {
         seed_file = "./DB/head_seed.log";
         uncomit_file = "./DB/head_uncommit.log";
-        record_file = "./head.rec";
+        record_file = "./DB/head.rec";
     }
 
     else if(news_type == 2) {
         seed_file = "./DB/ettoday_seed.log";
         uncomit_file = "./DB/ettoday_uncommit.log";
-        record_file = "./ettoday.rec";
+        record_file = "./DB/ettoday.rec";
     }
 
     std::cout << "=========start craweling==========" << std::endl;

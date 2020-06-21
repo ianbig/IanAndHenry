@@ -6,18 +6,21 @@ int main(int argc, char **argv) {
         int news_type = -1;
         crawler master;
 
-        if(argv[1] == "storm") {
+        if(strcmp( argv[1], "storm") == 0) {
             news_type = 0;
         }
 
-        else if(argv[1] == "head") {
+        else if(strcmp( argv[1], "head") == 0) {
             news_type = 1;
         }
 
-        else if(argv[1] == "ettoday") {
+        else if(strcmp( argv[1], "ettoday") == 0) {
             news_type = 2;
         }
-
+        if(news_type == -1) {
+            std::cout << "ERROR: NOT designated website" << std::endl;
+            exit(-1);
+        }
         master.start(news_type);
     }
     
