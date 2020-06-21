@@ -1,35 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-//#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-
-// c++ : because the header files between c and cpp are different
-#include <iostream>
-#include <arpa/inet.h>
-#include <sys/uio.h>
-
-class sockClient
-{
-private:
-    int MAX_MSG;
-    int clientfd;
-    int connect_state;
-    struct sockaddr_in client_info;
-    bool runnable;
-    char recvbuf[512];
-    char sendbuf[512];
-    void _check();
-public:
-    sockClient();
-    ~sockClient();
-    void check();
-    void send_message(int, int, std::string);
-    void run();
-};
-
+#include "sockClient.h"
 sockClient::sockClient()
 {
     MAX_MSG = 512;
@@ -93,25 +62,6 @@ void sockClient::send_message(int status, int news_type, std::string url) {
 	else
 		std::cerr << "please use check() before sending messages" << std::endl;
 }
-
-/*bool sockClient::send2server(std::string str){
-    if (!runnable){
-        std::cerr << "Please check where goes wrong" << std::endl;
-        return false;
-    }
-    if (write(clientfd, str.c_str(), sizeof(str)) < 0)
-        return false;
-    return true;
-}
-
-int sockClient::revcfromserver() {
-    if (!runnable){
-        std::cerr << "Please check where goes wrong" << std::endl;
-        return -1;
-    }
-    memset(recvbuf, '\0', sizeof(recvbuf));
-    return recv(clientfd, recvbuf, sizeof(recvbuf), 0);
-}*/
 
 void sockClient::run() {
     _check();
