@@ -14,9 +14,9 @@ extern bool crawling;
 extern bool report;
 
 /**Server info */
-extern int total_count;
+extern std::atomic<int> total_count;
 extern std::tm begin_time;
-extern int failure_count;
+extern std::atomic<int> failure_count;
 
 /**Workload */
 extern std::string clientA_name;
@@ -27,16 +27,16 @@ extern std::string clientC_name;
 extern int total_C;
 
 /**Website info */
-extern int wind_cnt;
-extern int wind_fail;
+extern std::atomic<int> wind_cnt;
+extern std::atomic<int> wind_fail;
 extern std::tm wind_begin;
 
-extern int ebc_cnt;
-extern int ebc_fail;
+extern std::atomic<int> ebc_cnt;
+extern std::atomic<int> ebc_fail;
 extern std::tm ebc_begin;
 
-extern int ettoday_cnt;
-extern int ettoday_fail;
+extern std::atomic<int> ettoday_cnt;
+extern std::atomic<int> ettoday_fail;
 extern std::tm ettoday_begin;
 
 /**Client info */

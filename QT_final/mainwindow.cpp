@@ -23,6 +23,17 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    /* atomic element setting */
+    total_count = 0;
+    failure_count = 0;
+    /*wind_cnt = 0;
+    wind_fail = 0;
+    ebc_cnt = 0;
+    ebc_fail = 0;
+    ettoday_cnt = 0;
+    ettoday_fail = 0;*/
+
+
     total_url_len = 0;
     total_url_cnt = 0;
     flag = false;
