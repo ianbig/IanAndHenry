@@ -31,13 +31,19 @@ std::string recv_string(int fd) {
     ssize_t r;
     // Receive message length in network byte order.
     uint32_t len;
-    if((r = recv_all(fd, &len, sizeof len)) <= 0)
-        throw std::runtime_error("recv_all 1");
+    if((r = recv_all(fd, &len, sizeof len)) <= 0) {
+        perror("recv_all 1");
+        return "";
+    }
+        //throw std::runtime_error("recv_all 1");
     len = ntohl(len);
     // Receive the message.
     std::string msg(len, '\0');
-    if(len && (r = recv_all(fd, &msg[0], len)) <= 0)
-        throw std::runtime_error("recv_all 2");
+    if(len && (r = recv_all(fd, &msg[0], len)) <= 0) {
+        perror("recv_all 2");
+        return "";
+    }
+        //throw std::runtime_error("recv_all 2");
     return msg;
 }
 
@@ -214,6 +220,8 @@ void sockServer::run() {
 int sockServer::read_from_client(int fd) {
     //char buf[MAX_MSG];
     std::string str=recv_string(fd);
+    if (str=="")
+        return -1;
     int nbytes = str.length();
         perror("read_from_client: read");
     /*while (check < nbytes) {

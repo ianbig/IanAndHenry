@@ -191,7 +191,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setEnabled(true);
-        MainWindow->resize(1680, 1050);
+        MainWindow->resize(1440, 900);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -247,7 +247,7 @@ public:
 
         client = new QWidget(centralwidget);
         client->setObjectName(QString::fromUtf8("client"));
-        client->setMinimumSize(QSize(800, 300));
+        client->setMinimumSize(QSize(700, 300));
         client->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_9 = new QVBoxLayout(client);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
@@ -265,7 +265,7 @@ public:
         client_content->setWidgetResizable(true);
         client_grid = new QWidget();
         client_grid->setObjectName(QString::fromUtf8("client_grid"));
-        client_grid->setGeometry(QRect(0, 0, 1888, 282));
+        client_grid->setGeometry(QRect(0, 0, 1888, 236));
         gridLayout_3 = new QGridLayout(client_grid);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         client2_widget = new QWidget(client_grid);
@@ -663,7 +663,7 @@ public:
 
         workload = new QWidget(centralwidget);
         workload->setObjectName(QString::fromUtf8("workload"));
-        workload->setMinimumSize(QSize(800, 300));
+        workload->setMinimumSize(QSize(700, 300));
         workload->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_7 = new QVBoxLayout(workload);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
@@ -679,7 +679,7 @@ public:
         workload_content->setWidgetResizable(true);
         workload_grid = new QWidget();
         workload_grid->setObjectName(QString::fromUtf8("workload_grid"));
-        workload_grid->setGeometry(QRect(0, 0, 780, 296));
+        workload_grid->setGeometry(QRect(0, 0, 680, 245));
         gridLayout_4 = new QGridLayout(workload_grid);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         clientC_state = new QProgressBar(workload_grid);
@@ -824,7 +824,7 @@ public:
 
         website = new QWidget(centralwidget);
         website->setObjectName(QString::fromUtf8("website"));
-        website->setMinimumSize(QSize(800, 300));
+        website->setMinimumSize(QSize(700, 300));
         website->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_8 = new QVBoxLayout(website);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
@@ -840,7 +840,7 @@ public:
         website_info_content->setWidgetResizable(true);
         website_info_grid = new QWidget();
         website_info_grid->setObjectName(QString::fromUtf8("website_info_grid"));
-        website_info_grid->setGeometry(QRect(0, 0, 828, 404));
+        website_info_grid->setGeometry(QRect(0, 0, 766, 291));
         gridLayout_2 = new QGridLayout(website_info_grid);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         ptt_widget = new QWidget(website_info_grid);
@@ -1080,7 +1080,7 @@ public:
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(server_info->sizePolicy().hasHeightForWidth());
         server_info->setSizePolicy(sizePolicy4);
-        server_info->setMinimumSize(QSize(800, 300));
+        server_info->setMinimumSize(QSize(700, 300));
         server_info->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         verticalLayout_3 = new QVBoxLayout(server_info);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -1096,7 +1096,7 @@ public:
         server_info_content->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 404));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 666, 404));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
@@ -1334,7 +1334,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1680, 22));
+        menubar->setGeometry(QRect(0, 0, 1440, 22));
         menuOption = new QMenu(menubar);
         menuOption->setObjectName(QString::fromUtf8("menuOption"));
         MainWindow->setMenuBar(menubar);
