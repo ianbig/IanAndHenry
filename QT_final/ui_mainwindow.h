@@ -1404,7 +1404,7 @@ public:
         Crawling->setText(QApplication::translate("MainWindow", "Crawling", nullptr));
         Report->setText(QApplication::translate("MainWindow", "Report", nullptr));
         website_text->setText(QApplication::translate("MainWindow", "Website Info", nullptr));
-        ebc_name->setText(QApplication::translate("MainWindow", "\346\226\260\351\240\255\346\256\274 newtalk", nullptr));
+        ebc_name->setText(QApplication::translate("MainWindow", "\350\217\257\350\246\226 CTS", nullptr));
         ebc_crawled_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         ebc_failed_count->setText(QApplication::translate("MainWindow", "0", nullptr));
         ebc_failure_rate->setText(QApplication::translate("MainWindow", "0", nullptr));

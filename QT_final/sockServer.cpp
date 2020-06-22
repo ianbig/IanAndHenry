@@ -207,6 +207,7 @@ void sockServer::run() {
                             if (m[i] == fd) {
                                 m.erase(i);
                                 clientState[i] = 0;
+                                break;
                             }
                         }
                         close(fd);
@@ -247,7 +248,7 @@ int sockServer::read_from_client(int fd) {
             char url[256];
             sscanf(str.c_str(), "%d %d %s", &status, &news, url);
             if (status == 0) { // 0: false
-                clientFail[i]++;
+                clientFail[i].fetch_add(1, std::memory_order_relaxed);;
                 failure_count.fetch_add(1, std::memory_order_relaxed);
                 if (news == 0) {
                     wind_fail.fetch_add(1, std::memory_order_relaxed);
@@ -271,7 +272,7 @@ int sockServer::read_from_client(int fd) {
                     ettoday_cnt.fetch_add(1, std::memory_order_relaxed);
             }
             clientUrl[i] = std::string(url);
-            clientCrawl[i]++;
+            clientCrawl[i].fetch_add(1, std::memory_order_relaxed);
             total_count.fetch_add(1, std::memory_order_relaxed);
             break;
         }

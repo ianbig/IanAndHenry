@@ -40,9 +40,9 @@ extern std::atomic<int> ettoday_fail;
 extern std::tm ettoday_begin;
 
 /**Client info */
-extern int clientState[3];
-extern int clientCrawl[3];
-extern int clientFail[3];
+extern std::atomic<int> clientState[3];
+extern std::atomic<int> clientCrawl[3];
+extern std::atomic<int> clientFail[3];
 extern std::tm clientBegin[3];
 extern std::string clientUrl[3];
 

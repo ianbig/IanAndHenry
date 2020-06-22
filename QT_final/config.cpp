@@ -42,8 +42,8 @@ std::tm ettoday_begin = *std::localtime(&t);;
  *      =1, run
  *      =2, suspend
  */
-int clientState[3] = {0};
-int clientCrawl[3] = {0};
-int clientFail[3] = {0};
+std::atomic<int> clientState[3];
+std::atomic<int> clientCrawl[3];
+std::atomic<int> clientFail[3];
 std::tm clientBegin[3] = {*std::localtime(&t)};
 std::string clientUrl[3];

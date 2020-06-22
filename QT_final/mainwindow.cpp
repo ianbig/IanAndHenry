@@ -26,6 +26,11 @@ MainWindow::MainWindow(QWidget *parent)
     /* atomic element setting */
     total_count = 0;
     failure_count = 0;
+    for (int i=0; i<3; i++) {
+        clientCrawl[i] = 0;
+        clientFail[i] = 0;
+        clientState[i] = 0;
+    }
     /*wind_cnt = 0;
     wind_fail = 0;
     ebc_cnt = 0;
@@ -100,7 +105,7 @@ void MainWindow::update() {
     std::time_t t = std::time(nullptr);
     std::tm* now = std::localtime(&t);
     setTime(now);
-    setProgress();
+    setProgress(now);
     setWebsite();
     if (flag) {
 
@@ -138,7 +143,7 @@ void MainWindow::setTime(std::tm* now) {
     ui->time->setText(time2qstring(now));
 }
 
-void MainWindow::setProgress() {
+void MainWindow::setProgress(std::tm* now) {
     if (report) {
         ui->Report->setStyleSheet("QLabel { color: green; }");
         ui->progressBar->setValue(100);
@@ -152,6 +157,7 @@ void MainWindow::setProgress() {
         ui->progressBar->setValue(50);
         flag = true;
         crawling = true;
+        begin_time = *now;
     }
     else if (database_connection) {
         ui->DatabaseConnection->setStyleSheet("QLabel { color: green; }");

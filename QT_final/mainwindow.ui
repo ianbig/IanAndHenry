@@ -1536,7 +1536,7 @@
                  <string notr="true">background-color: rgb(211, 215, 207);</string>
                 </property>
                 <property name="text">
-                 <string>新頭殼 newtalk</string>
+                 <string>華視 CTS</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>

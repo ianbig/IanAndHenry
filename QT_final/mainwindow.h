@@ -31,7 +31,7 @@ private:
     Ui::MainWindow *ui;
     bool flag; // first set
     void setTime(std::tm*);
-    void setProgress();
+    void setProgress(std::tm*);
     void setServerInfo(std::tm*);
     void setWorkload();
     void setWebsite();
