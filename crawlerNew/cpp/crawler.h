@@ -32,13 +32,13 @@ History:
 #ifndef CRAWLER_H
 #define CRAWLER_H
 
-#define MAX_RECORD_SIZE 100
+#define MAX_RECORD_SIZE 10000
 #define _GNU_SOUARCE
-#define MAX_RECORD 5
+#define MAX_RECORD 100
 #define ERROR_SEED_EMPTY -1
 #define ERROR_DOCUMENT_NOT_EXISTS -2
 #define FLOW_CONTROL_SEC 0.5
-#define MAX_URL_CAPACITY 100
+#define MAX_URL_CAPACITY 10000
 
 #include <stdlib.h>
 #include <stdio.h>

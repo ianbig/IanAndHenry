@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
             news_type = 0;
         }
 
-        else if(strcmp( argv[1], "head") == 0) {
+        else if(strcmp( argv[1], "cts") == 0) {
             news_type = 1;
         }
 

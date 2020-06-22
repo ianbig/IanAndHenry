@@ -11,12 +11,13 @@ std::map<std::string, int> stack;
 Parser::Parser() {
     Size_OF_RecordQueue = sizeof(std::vector<struct MemoryStruct>);
     size_parser_master_cache = sizeof(std::vector<std::string>);
-    whiteList.push_back("https:.*article\\/\\d*");
-    whiteList.push_back("https:.*htm");
-    whiteList.push_back("https.*view[\\/|\\d|-]*");
-    blackList.push_back("facebook");
-    blackList.push_back("instagram");
-    sc = new sockClient();
+    whiteList.push_back("https:\\/\\/www\\.storm\\.mg\\/article.*"); // allow list for storm
+    whiteList.push_back("https:\\/\\/www\\.ettoday\\.net.*htm"); // allow list fot ettoday
+    whiteList.push_back("https:\\/\\/news\\.cts\\.com\\.tw.*html"); // allow list for cts
+    blackList.push_back("https:\\/\\/www\\.ettoday\\.net\\/.*");
+    blackList.push_back("https:\\/\\/news\\.cts\\.com\\.tw\\/.*");
+    blackList.push_back("https:\\/\\/www\\.storm\\.mg\\/.*");
+    //sc = new sockClient();
 }
 
 // 0 means success fetch; -1 means blackList website not fetch
@@ -34,13 +35,19 @@ int Parser::fetch(const char *url, int news_type) {
         tmpList = whiteList.at(i);
         if( std::regex_match(url, std::regex(tmpList)) ) chunk.flag = true;
     }
-
     
-    // not fetch black List
-    for(int i = 0; i < blackList.size(); i++) {
-        tmpList = blackList.at(i);
-        if( findCaseInsensitive(url, tmpList) != std::string::npos )
-            return ERROR_BLACKLIST_BLOCK;
+    // if not fetch black List(website that is allowed to fetcch) return
+    int bindex = 0;
+    for(bindex = 0; bindex < blackList.size(); bindex++) {
+        tmpList = blackList.at(bindex);
+        if( std::regex_match(url, std::regex(tmpList)) ) {
+            break;
+        }
+    }
+
+    if(bindex == blackList.size() ) {
+        std::cerr << "not fetch" << std::endl;
+        return ERROR_BLACKLIST_BLOCK;
     }
     
 
@@ -61,8 +68,8 @@ int Parser::fetch(const char *url, int news_type) {
         res = curl_easy_perform(fetcher);
         if(res == CURLE_OK) {
             /* send back information to craweler UI */
-            //sc->check();
-            //sc->send_message(1, news_type, url);
+           // sc->check();
+           // sc->send_message(1, news_type, url);
         }
         else {
             /* send back information to craweler UI */
