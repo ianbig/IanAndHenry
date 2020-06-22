@@ -8,7 +8,9 @@ TINCLUDE = /usr/local/include/
 TLIB = /usr/local/lib/
 LIB = mysql-connector-c++-8.0.20-linux-glibc2.12-x86-64bit/lib64
 CXX_STANDARD = -std=c++11
-all:crawler
+
+.PHONY: all clean
+all: crawler
 crawler: $(OBJ)
 	$(CC) -O0 -o ../crawler $(CXX_STANDARD) $(REF_FILE) $(OBJ)  $(CFLAG) -L$(TLIB) -L$(HOME)/$(LIB) $(LCFLAG)  -D_GLIBCXX_USE_CXX11_ABI=0
 DataBase.o: DataBase.cpp DataBase.h
@@ -25,6 +27,5 @@ main.o: main.cpp
 	$(CC) -O0 -c $(CXX_STANDARD) -I$(HOME)/$(INCLUDE) -I$(TINCLUDE) main.cpp -D_GLIBCXX_USE_CXX11_ABI=0
 
 
-.PHONY: clean
 clean:
 	rm *.o
