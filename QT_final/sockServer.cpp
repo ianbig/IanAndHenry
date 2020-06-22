@@ -10,6 +10,7 @@
 #include <iostream>
 #include  <arpa/inet.h>
 #include <sys/uio.h>
+#include <atomic>
 
 #include "sockServer.h"
 #include "config.h"
@@ -247,31 +248,31 @@ int sockServer::read_from_client(int fd) {
             sscanf(str.c_str(), "%d %d %s", &status, &news, url);
             if (status == 0) { // 0: false
                 clientFail[i]++;
-                failure_count++;
+                failure_count.fetch_add(1, std::memory_order_relaxed);
                 if (news == 0) {
-                    wind_fail++;
-                    wind_cnt++;
+                    wind_fail.fetch_add(1, std::memory_order_relaxed);
+                    wind_cnt.fetch_add(1, std::memory_order_relaxed);
                 }
                 else if (news == 1) {
-                    ebc_fail++;
-                    ebc_cnt++;
+                    ebc_fail.fetch_add(1, std::memory_order_relaxed);
+                    ebc_cnt.fetch_add(1, std::memory_order_relaxed);
                 }
                 else {
-                    ettoday_fail++;
-                    ettoday_cnt++;
+                    ettoday_fail.fetch_add(1, std::memory_order_relaxed);
+                    ettoday_cnt.fetch_add(1, std::memory_order_relaxed);
                 }
             }
             else {
                 if (news == 0)
-                    wind_cnt++;
+                    wind_cnt.fetch_add(1, std::memory_order_relaxed);
                 else if (news == 1)
-                    ebc_cnt++;
+                    ebc_cnt.fetch_add(1, std::memory_order_relaxed);
                 else
-                    ettoday_cnt++;
+                    ettoday_cnt.fetch_add(1, std::memory_order_relaxed);
             }
             clientUrl[i] = std::string(url);
             clientCrawl[i]++;
-            total_count++;
+            total_count.fetch_add(1, std::memory_order_relaxed);
             break;
         }
     }

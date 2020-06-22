@@ -12,29 +12,29 @@ static std::time_t t = std::time(nullptr);
 bool sockServerStop = false;
 
 /**Server info */
-int total_count = 0;
+std::atomic<int> total_count;
 std::tm begin_time = *std::localtime(&t);
-int failure_count = 0;
+std::atomic<int> failure_count;
 
 /**Workload */
 std::string clientA_name = "A";
 std::string clientB_name = "B";
 std::string clientC_name = "C";
-int total_A = 100000;
-int total_B = 100000;
-int total_C = 100000;
+int total_A = 10000;
+int total_B = 10000;
+int total_C = 10000;
 
 /**Website info */
-int wind_cnt;
-int wind_fail = 0;
+std::atomic<int> wind_cnt;
+std::atomic<int> wind_fail;
 std::tm wind_begin = *std::localtime(&t);;
 
-int ebc_cnt = 0;
-int ebc_fail = 0;
+std::atomic<int> ebc_cnt;
+std::atomic<int> ebc_fail;
 std::tm ebc_begin = *std::localtime(&t);;
 
-int ettoday_cnt = 0;
-int ettoday_fail = 0;
+std::atomic<int> ettoday_cnt;
+std::atomic<int> ettoday_fail;
 std::tm ettoday_begin = *std::localtime(&t);;
 
 /**Client info
