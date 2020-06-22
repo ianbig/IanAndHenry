@@ -61,13 +61,13 @@ int Parser::fetch(const char *url, int news_type) {
         res = curl_easy_perform(fetcher);
         if(res == CURLE_OK) {
             /* send back information to craweler UI */
-            sc->check();
-            sc->send_message(1, news_type, url);
+            //sc->check();
+            //sc->send_message(1, news_type, url);
         }
         else {
             /* send back information to craweler UI */
-            sc->check();
-            sc->send_message(0, news_type, url);
+            //sc->check();
+            //sc->send_message(0, news_type, url);
         }
         curl_slist_free_all(plist);
         curl_easy_cleanup(fetcher);

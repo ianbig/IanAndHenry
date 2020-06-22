@@ -34,11 +34,11 @@ History:
 
 #define MAX_RECORD_SIZE 100
 #define _GNU_SOUARCE
-#define MAX_RECORD 10
+#define MAX_RECORD 5
 #define ERROR_SEED_EMPTY -1
 #define ERROR_DOCUMENT_NOT_EXISTS -2
-#define FLOW_CONTROL 0.0
-#define MAX_URL_CAPACITY 1000
+#define FLOW_CONTROL_SEC 0.5
+#define MAX_URL_CAPACITY 100
 
 #include <stdlib.h>
 #include <stdio.h>
